@@ -119,6 +119,16 @@ bool tree::del_right()
 	return 1;
 }
 
+bool tree::is_left()
+{
+	return current_ -> left_;
+}
+
+bool tree::is_right()
+{
+	return current_ -> right_;
+}
+
 std::string & tree::data()
 {
 	return current_->data_;

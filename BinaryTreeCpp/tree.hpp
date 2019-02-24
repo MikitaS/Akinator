@@ -37,6 +37,10 @@ public:
 	bool del_right();
 	bool del_left();
 	
+	/*return 1 if your way exist*/ 
+	bool is_left();
+	bool is_right();
+	
 	/*return link to a data of current element*/
 	std::string & data();
 
