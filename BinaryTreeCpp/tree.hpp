@@ -15,34 +15,34 @@ class tree
 {
 public:
 ///Constructors and destructor:
-	tree(); //done
-	explicit tree(std::string str);//done
-	~tree();//done
+	tree();
+	explicit tree(std::string str);
+	~tree();
 
 ///Methods:
 	/*move current pointer
 	 * return 0 if your way is empty*/
-	bool go_left();//done
-	bool go_right();//done
-	bool go_back();//done
-	void go_head();//done
+	bool go_left();
+	bool go_right();
+	bool go_back();
+	void go_head();
 	
 	/*add new element
 	 * return 0 if you way is already exist*/
-	bool add_left(std::string data);//done
-	bool add_right(std::string data);//done
+	bool add_left(std::string data);
+	bool add_right(std::string data);
 	
 	/*delete element
 	 * return 0 if your way is empty*/
-	bool del_right();//done
-	bool del_left();//done
+	bool del_right();
+	bool del_left();
 	
 	/*return link to a data of current element*/
-	std::string & data(); //done
+	std::string & data();
 
 private:
 	/*delete tree starting from pointer*/
-	void delete_tree(TreeElement * first); //done
+	void delete_tree(TreeElement * first);
 
 	TreeElement * head_;
 	TreeElement * current_;
