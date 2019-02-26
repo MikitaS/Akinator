@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include "tree.hpp"
+#include <fstream>
 
 ///Constructors and destructor:
 
@@ -134,4 +135,76 @@ std::string & tree::data()
 	return current_->data_;
 }
 
+void tree::to_file(std::string filename)
+{
+	std::ofstream dumpfile(filename);
+	
+	this->dump(head_, dumpfile);
+	
+	dumpfile.close();
+}
 
+void tree::dump(TreeElement * first, std::ofstream & dumpfile)
+{
+	dumpfile << first -> data_;
+	
+	if(!(first->left_ || first->right_))
+		return;
+		
+	dumpfile << " ( ";
+	
+	if(first->left_)
+	{
+		this->dump(first -> left_, dumpfile);
+	}
+	
+	dumpfile << " , ";
+	
+	if(first->right_)
+	{
+		this->dump(first->right_, dumpfile);
+	}
+	
+	dumpfile << " ) ";
+}
+
+void tree::from_file(std::string filename)
+{
+	std::ifstream readfile(filename);
+	
+	current_ = head_;
+	this -> del_right();
+	this -> del_left();
+	
+	writein(head_, readfile);
+	
+	readfile.close();
+}
+
+void tree::writein(TreeElement * first, std::ifstream & readfile)
+{
+	std::string word = "";
+	std::string result = "";
+	
+	readfile >> word;
+	
+	while(word != "(" && word != "," && word != ")")
+	{
+		result += word;
+		readfile >> word;
+		result+= " ";
+	}
+		
+	first->data_ = result;
+	
+	if(word == "," || word == ")")
+	{
+		return;
+	}
+	
+	first->left_ = new TreeElement; 
+	writein(first->left_, readfile);
+	
+	first->right_ = new TreeElement;
+	writein(first->right_, readfile); 
+}

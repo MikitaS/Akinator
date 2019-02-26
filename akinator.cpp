@@ -97,3 +97,13 @@ void akinator::addnew()
 	tree_.data() = answer;
 	
 }
+
+void akinator::read_from_file(std::string filename)
+{
+	tree_.from_file(filename);
+}
+
+void akinator::save_to_file(std::string filename)
+{
+	tree_.to_file(filename);
+}

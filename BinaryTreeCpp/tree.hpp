@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <fstream>
 
 struct TreeElement
 {
@@ -37,16 +38,21 @@ public:
 	bool del_right();
 	bool del_left();
 	
-	/*return 1 if your way exist*/ 
+	/*return link to a data of current element*/
+	std::string & data();
+	
 	bool is_left();
 	bool is_right();
 	
-	/*return link to a data of current element*/
-	std::string & data();
+	
+	void to_file(std::string filename);
+	void from_file(std::string filename);	
 
 private:
 	/*delete tree starting from pointer*/
-	void delete_tree(TreeElement * first);
+	void delete_tree(TreeElement * first); 
+	void dump(TreeElement * first, std::ofstream & dumpfile);
+	void writein(TreeElement * first, std::ifstream & dumpfile);
 
 	TreeElement * head_;
 	TreeElement * current_;

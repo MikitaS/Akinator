@@ -8,6 +8,7 @@ int main()
 {
 	std::string status = "yes";
 	akinator a("cat");
+	a.read_from_file("aki.txt");
 	while(status == "yes")
 	{
 		a.start();
@@ -21,5 +22,6 @@ int main()
 		}
 		
 	}
+	a.save_to_file("aki.txt");
 	return 0;
 }
